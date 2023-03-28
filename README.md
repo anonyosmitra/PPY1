@@ -1,6 +1,6 @@
 # PPY1
-## System to create account and login
-## Maintain state using cookies
+* System to create account and login
+* Maintain state using cookies
 ## Location:
   * ipapi to get location on the user
 ## Weather(Phase 2):
