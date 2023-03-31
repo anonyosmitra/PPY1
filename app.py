@@ -41,6 +41,7 @@ async def login(request: Request):
             con.close()
             return templates.TemplateResponse("homePage.html",{"request": request, "username": frm["username"], "session": session})
         else:
+
             con.close()
             return templates.TemplateResponse("login.html", {"request": request, "msg": "Invalid username or password"})
 
