@@ -30,4 +30,4 @@ def logout(response: Response):
     return HTMLResponse(content='<meta http-equiv="refresh" content="0; URL=/" />')
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="fluidos.anonyo.net", port=8800)
+    uvicorn.run(app, host="fluidos.anonyo.net", port=5800)
