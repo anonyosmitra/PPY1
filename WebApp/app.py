@@ -130,6 +130,6 @@ def logout(request: Request):
     if session is not None:
         resp = HTTPRequests.post(api + "logout", data=json.dumps({"session": session}))
     return HTMLResponse(content='<script>document.cookie="session=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";window.location="/";</script>')
-def run():
-    if __name__ == "__main__":
-        uvicorn.run(app, host="localhost", port=5000)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=5000)

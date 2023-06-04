@@ -120,7 +120,7 @@ def map(loc:Dict[str, Any]):
         resp.tempUnit="F"
     con.close()
     return resp
-def run():
-    if __name__ == "__main__":
-        uvicorn.run(app, host="localhost", port=5001)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=5001)
 
