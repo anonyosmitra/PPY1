@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>My Weather App</h1>
+<snap class="rig">hello {{username}},</snap>
+<snap class="rig"><input type="button" onclick="location.href='{{url_for('logout')}}';" value="Logout" /></snap>
+<div class="button-container">
+    <button class="Mainbutton" onclick="location.href='{{url_for('home')}}'">Home</button>
+    <button class="Mainbutton" onclick="location.href='{{url_for('map')}}'">Map</button>
+    <button class="Mainbutton" onclick="location.href='{{url_for('settings')}}'">Settings</button>
+  </div>
+{{info}}
+{%block body%}{%endblock%}
+
+</body>
+</html>

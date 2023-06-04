@@ -4,9 +4,10 @@ import pytz
 
 defaultFmt = "%Y-%m-%d %H:%M:%S %Z%z"
 timezones = pytz.all_timezones
-SysTZ = "UTC"
+SysTZ = "Europe/Warsaw"
 
-
+def SetSysTZ(zone):
+    SysTZ=zone
 def getTimeDif(zone, SysTz=SysTZ):
     zone = pytz.timezone(zone)
     time = datetime.now()

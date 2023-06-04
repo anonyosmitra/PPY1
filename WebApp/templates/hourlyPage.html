@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{%block title%}{{location}}{% endblock %}
+{%block body%}
+<div class="hour_page">
+    <h3>{{location}}</h3>
+    <div class="weather_container">
+    {%for i in weathers%}
+        <div class="box_hourly"><div class="lft">{{i["time"]}}</div><div class="cen">{{i["temp"]}}°{{tempUnit}}</div><div class="rig">
+            {{i["weather"]}}</div></div>
+    {%endfor%}
+    </div>
+</div>
+{%endblock%}

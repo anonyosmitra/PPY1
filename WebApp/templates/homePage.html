@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{%block title%}Home{% endblock %}
+{%block body%}
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS for the container */
+
+  </style>
+</head>
+<body>
+  <div class="weather_container">
+    {%for i in locs%}
+    <div class="weather_box"  onclick="window.location.href = '{{url_for('hourly',id=i["id"])}}'">
+      <snap>{{i["name"]}}</snap> {{i["temp"]}}°{{tempUnit}}<br>
+      <snap>{{i["weather"]}}<snap>
+    </div>
+    {%endfor%}
+  </div>
+</body>
+</html>
+{%endblock%}

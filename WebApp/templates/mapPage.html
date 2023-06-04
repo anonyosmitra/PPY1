@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{%block title%}Map{% endblock %}
+{%block body%}
+<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbhlPMsbFFOtlCUdUXEVc8QmzcSBjEbMs"></script>
+<script>
+    var map;
+var marker = false;
+function initMap(lat,lon) {
+    var centerOfMap = new google.maps.LatLng({{lat}},{{lon}});
+    var options = {
+      center: centerOfMap,
+      zoom: 7
+    };
+    map = new google.maps.Map(document.getElementById('map'), options);
+    map.addListener("click", function(event) {
+      var clickedLocation = event.latLng;
+      marker.setPosition(clickedLocation);
+      markerLocation(clickedLocation.lat(),clickedLocation.lng());
+    });
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng({{lat}},{{lon}}),
+      map: map,
+      title: "Pinned Location",
+    });
+}
+function markerLocation(lat,lon){
+    document.getElementById("wet_lat").value=lat;
+    document.getElementById("wet_lon").value=lon;
+    document.getElementById("weatherForm").submit();
+}
+    google.maps.event.addDomListener(window, 'load', initMap);
+
+</script>
+<div id="map"></div>
+<div class="weather_box">
+      {{temp}}°{{tempUnit}}<br>
+      <snap>{{weather}}<snap>
+    </div>
+<form hidden="true" action="{{url_for('map')}}" method="post">
+    <input name="lat" value={{lat}} hidden="true"/>
+    <input name="lon" value={{lon}} hidden="true"/>
+    <input name="name" placeholder="Name"/><input class="Mainbutton2" type="submit" value="Save">
+</form>
+<form hidden="true" id="weatherForm" action="{{url_for('map')}}" method="post">
+    <input name="lat" id="wet_lat" hidden="true"/>
+    <input name="lon" id="wet_lon" hidden="true"/>
+</form>
+{%endblock%}

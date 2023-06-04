@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{%block title%}Settings{% endblock %}
+{%block body%}
+<script>
+    function deleteLocation(id){
+        document.getElementById("locId").value=id;
+        document.getElementById("delete").submit();
+    }
+    function updateUnit(){
+        document.getElementById("unitUpdate").submit();
+    }
+</script>
+<h2>Setttings</h2>
+<h4>Unit</h4>
+<form id="unitUpdate" action="{{url_for('settings')}}" method="post">
+    <input type="radio" id="Met" name="unit" value="metric" {%if unit=="metric"%}checked{%endif%} onchange="updateUnit()">
+    <label for="Met">Metric</label><br>
+    <input type="radio" id="Imp" name="unit" value="imperial" {%if unit=="imperial"%}checked{%endif%} onchange="updateUnit()">
+    <label for="Imp">Imperial</label><br>
+</form>
+<form hidden="true" id="delete" action="{{url_for('settings')}}" method="post">
+    <input id="locId" hidden="true" name="loc"/>
+</form>
+<h4>Locations</h4>
+  <div class="weather_container">
+    {%for i in locs%}
+    <div class="weather_box">
+      <snap>{{i["name"]}}</snap> <input type="button" class="Mainbutton2" value="Delete" onclick="deleteLocation({{i["id"]}})">
+    </div>
+    {%endfor%}
+  </div>
+{%endblock%}

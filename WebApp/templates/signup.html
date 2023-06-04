@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<H1>Sign Up</H1>
+    <form action="{{url_for('signup')}}" method="post">
+    <input class="loginInput" name="username" value="{{username}}" placeholder="username"/><br>
+    <input name="password1" class="loginInput" placeholder="password" type="password"/><br>
+    <input name="password2" class="loginInput" placeholder="password" type="password"/><br>
+      <snap>{{msg}}</snap><br>
+    <input class="Mainbutton2" type="submit" value="login">
+</form>
+</body>
+</html>
