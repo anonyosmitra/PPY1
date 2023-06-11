@@ -7,11 +7,9 @@ from dbHandler2 import Connect
 from models.models import User, Coordinates,Location
 
 api="http://ip-api.com/json/{}"
-def localhost():
-    return HTTPRequests.get("https://api.ipify.org").text
 def getInfo(ip:str):
     if ip== "127.0.0.1":
-        ip=localhost()
+        ip=""
     return json.loads(HTTPRequests.get(api.format(ip)).text)
 
 def getLocations(user:User,con:Connect)->List[Location]:
